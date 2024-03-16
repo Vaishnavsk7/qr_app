@@ -7,6 +7,13 @@ class Registration extends StatefulWidget {
 }
 
 class _RegistrationState extends State<Registration> {
+  final TextEditingController _name = TextEditingController();
+  final TextEditingController _dob = TextEditingController();
+  final TextEditingController _username = TextEditingController();
+  final TextEditingController _password = TextEditingController();
+
+  bool loading = false;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(backgroundColor: Colors.cyan[200],
@@ -19,7 +26,7 @@ class _RegistrationState extends State<Registration> {
           children: [
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: TextField(decoration: InputDecoration(
+              child: TextField(controller:_name,decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Full Name',
                   hintText: 'Enter Your Full Name'
@@ -27,7 +34,7 @@ class _RegistrationState extends State<Registration> {
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: TextField(decoration: InputDecoration(
+              child: TextField(controller:_dob,decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'DOB',
                   hintText: 'Enter Yourc  DOB'
@@ -36,7 +43,7 @@ class _RegistrationState extends State<Registration> {
 
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: TextField(decoration: InputDecoration(
+              child: TextField(controller:_username,decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Username',
                   hintText: 'Enter Your Username'
@@ -45,7 +52,7 @@ class _RegistrationState extends State<Registration> {
 
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: TextField(decoration: InputDecoration(
+              child: TextField(controller:_password,decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Password',
                   hintText: 'Enter Your Password'
