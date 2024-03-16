@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart'as http;
 class Registration extends StatefulWidget {
   const Registration({Key? key}) : super(key: key);
 
@@ -13,7 +16,24 @@ class _RegistrationState extends State<Registration> {
   final TextEditingController _password = TextEditingController();
 
   bool loading = false;
-  
+
+  void registration()async{
+    Uri uri=Uri.parse('https://scnner-web.onrender.com/api/register');
+    var response = await http.post(uri,
+    headers: <String,String>{
+      'Content-Type':'application/json;charset=UTF-8',
+    },
+    body: jsonEncode({
+    'name':_name.text,
+    'dob':_dob.text,
+    'username':_username.text,
+    'password':_password.text
+    }));
+    print(_name.text);
+    print(_dob.text);
+    print(_username.text);
+    print(_password.text);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(backgroundColor: Colors.cyan[200],
@@ -59,7 +79,7 @@ class _RegistrationState extends State<Registration> {
               ),),
             ),
             SizedBox(height: 30,),
-            TextButton(onPressed: null, child: Text('Register',style: TextStyle(color: Colors.green),))
+            TextButton(onPressed: registration, child: Text('Register',style: TextStyle(color: Colors.green),))
           ],
         ),
       ),
