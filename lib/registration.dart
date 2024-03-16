@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart'as http;
+import 'package:qrapp/login.dart';
 class Registration extends StatefulWidget {
   const Registration({Key? key}) : super(key: key);
 
@@ -29,6 +30,16 @@ class _RegistrationState extends State<Registration> {
     'username':_username.text,
     'password':_password.text
     }));
+    print(response.statusCode);
+    print(response.body);
+    var data=jsonDecode(response.body);
+    print(data["message"]);
+    if(response.statusCode==200){
+      Navigator.push(context, MaterialPageRoute(builder: (Context)=> Login()));
+    }
+    else{
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('error'),));
+    }
     print(_name.text);
     print(_dob.text);
     print(_username.text);
