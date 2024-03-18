@@ -12,9 +12,9 @@ class Registration extends StatefulWidget {
 
 class _RegistrationState extends State<Registration> {
   final TextEditingController _name = TextEditingController();
-  final TextEditingController _dob = TextEditingController();
+  final TextEditingController rollno = TextEditingController();
   final TextEditingController _username = TextEditingController();
-  final TextEditingController _password = TextEditingController();
+  final TextEditingController password = TextEditingController();
 
   bool loading = false;
 
@@ -26,9 +26,9 @@ class _RegistrationState extends State<Registration> {
     },
     body: jsonEncode({
     'name':_name.text,
-    'dob':_dob.text,
+    'rollno':rollno.text,
     'username':_username.text,
-    'password':_password.text
+    'password':password.text
     }));
     print(response.statusCode);
     print(response.body);
@@ -41,9 +41,9 @@ class _RegistrationState extends State<Registration> {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('error'),));
     }
     print(_name.text);
-    print(_dob.text);
+    print(rollno.text);
     print(_username.text);
-    print(_password.text);
+    print(password.text);
   }
   @override
   Widget build(BuildContext context) {
@@ -65,10 +65,10 @@ class _RegistrationState extends State<Registration> {
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: TextField(controller:_dob,decoration: InputDecoration(
+              child: TextField(controller:rollno,decoration: InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'DOB',
-                  hintText: 'Enter Yourc  DOB'
+                  labelText: 'rollno',
+                  hintText: 'Enter Your  Rollno'
               ),),
             ),
 
@@ -83,7 +83,7 @@ class _RegistrationState extends State<Registration> {
 
             Padding(
               padding: const EdgeInsets.all(20.0),
-              child: TextField(controller:_password,decoration: InputDecoration(
+              child: TextField(controller:password,decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Password',
                   hintText: 'Enter Your Password'
